@@ -1,4 +1,4 @@
 [wrap-git]
-url = https://github.com/embeddedartistry/libc
+url = https://github.com/quara-dev/libc
 revision = master
 clone-recursive = true
