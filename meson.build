@@ -39,6 +39,7 @@ endif
 if get_option('enable-pedantic-error')
 	desired_common_compile_flags += '-pedantic-error'
 endif
+enable_testing = get_option('enable-testing')
 
 compile_settings_list = [
 	{'lang': 'c', 'compiler': host_c_compiler, 'flags': desired_c_compile_flags, 'isnative': false},
@@ -56,7 +57,9 @@ subdir('meson/compiler/check-and-apply-flags')
 
 # Include reusable build modules here via subdir() calls
 subdir('meson/linker/linker-map')
-subdir('meson/test/cmocka')
+if enable_testing
+    subdir('meson/test/cmocka')
+endif
 
 ###############
 # Subprojects #
@@ -111,7 +114,9 @@ subdir('include/')
 subdir('src/')
 
 # Test build definition
-subdir('test/')
+if enable_testing
+    subdir('test/')
+endif
 
 ###################
 # Tooling Modules #
